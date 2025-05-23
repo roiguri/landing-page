@@ -33,7 +33,7 @@ export default function ProjectCard({ project }) {
 
   return (
     <motion.div
-      className="relative bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100 overflow-hidden h-[480px] flex flex-col cursor-pointer group"
+      className="relative bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100 overflow-hidden h-[490px] min-w-[300px] flex flex-col cursor-pointer group"
       whileHover={{ 
         y: -6, 
         rotate: 0.3,
@@ -123,7 +123,7 @@ export default function ProjectCard({ project }) {
         </svg>
       </div>
 
-      {/* Enhanced animated sketch border */}
+      {/* Moving incomplete border sketch - chasing its tail */}
       <motion.svg 
         className="absolute inset-0 w-full h-full pointer-events-none z-10" 
         viewBox="0 0 100 100" 
@@ -134,12 +134,18 @@ export default function ProjectCard({ project }) {
           fill="none" 
           stroke={project.color || "#6366F1"}
           strokeWidth="0.8"
-          strokeDasharray="2,1"
+          strokeLinecap="round"
           opacity="0.6"
           className="group-hover:opacity-100 transition-opacity duration-300"
-          initial={{ pathLength: 0 }}
-          animate={{ pathLength: 1 }}
-          transition={{ duration: 2, delay: 0.3 }}
+          strokeDasharray="320 40" // Long dash followed by a gap
+          animate={{ 
+            strokeDashoffset: [0, -360], // Move the gap around the perimeter
+          }}
+          transition={{ 
+            duration: 16, 
+            repeat: Infinity, 
+            ease: "linear"
+          }}
         />
       </motion.svg>
       
