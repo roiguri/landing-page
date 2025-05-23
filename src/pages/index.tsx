@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import SketchyDivider from "../../components/SketchyDivider";
-import ProjectCarousel from "../../components/ProjectCarousel";
-import BackgroundSketches from "../../components/BackgroundSketches";
+import SketchyDivider from "../components/SketchyDivider";
+import ProjectCarousel from "../components/ProjectCarousel";
+import BackgroundSketches from "../components/BackgroundSketches";
 
 interface Project {
   id: number;
