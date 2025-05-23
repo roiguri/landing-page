@@ -31,6 +31,38 @@ export default function Home() {
     },
   ];
 
+  // Custom smooth scroll function with better easing
+  const smoothScrollToProjects = () => {
+    const projectsSection = document.getElementById('projects-section');
+    if (!projectsSection) return;
+
+    const startPosition = window.pageYOffset;
+    const targetPosition = projectsSection.offsetTop - 80; // 80px offset from top
+    const distance = targetPosition - startPosition;
+    const duration = 1200; // 1.2 seconds
+    let start: number | null = null;
+
+    // Easing function for smoother animation (easeInOutCubic)
+    const easeInOutCubic = (t: number): number => {
+      return t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1;
+    };
+
+    const animation = (currentTime: number) => {
+      if (start === null) start = currentTime;
+      const timeElapsed = currentTime - start;
+      const progress = Math.min(timeElapsed / duration, 1);
+      
+      const ease = easeInOutCubic(progress);
+      window.scrollTo(0, startPosition + distance * ease);
+      
+      if (timeElapsed < duration) {
+        requestAnimationFrame(animation);
+      }
+    };
+
+    requestAnimationFrame(animation);
+  };
+
   return (
     <main 
       ref={mainRef} 
@@ -280,14 +312,7 @@ export default function Home() {
               className="flex items-center justify-center mt-8 md:hidden"
             >
               <button 
-                onClick={() => {
-                  const projectsSection = document.getElementById('projects-section');
-                  if (projectsSection) {
-                    projectsSection.scrollIntoView({ 
-                      behavior: 'smooth' 
-                    });
-                  }
-                }}
+                onClick={smoothScrollToProjects}
                 className="flex items-center gap-2 text-gray-700 hover:text-gray-900 transition-colors duration-300 group"
                 aria-label="Scroll to projects"
               >
