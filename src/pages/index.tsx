@@ -126,18 +126,18 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                 className="relative max-w-xs mx-auto md:mx-0"
               >
-                <div className="relative z-10 w-48 h-48 mx-auto overflow-hidden rounded-full">
+                <div className="relative z-10 w-56 h-56 mx-auto overflow-hidden rounded-full">
                   <img 
-                    src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=300&auto=format&fit=crop" 
+                    src="/profile.png" 
                     alt="Profile" 
-                    className="w-full h-full object-cover"
+                    className="w-fit h-auto object-cover object-top"
                     style={{ filter: "contrast(1.1) brightness(0.95)" }}
                   />
                 </div>
                 
                 {/* Sketchy round frame with bright colors */}
                 <svg 
-                  className="absolute top-0 left-1/2 transform -translate-x-1/2 w-52 h-52 z-0" 
+                  className="absolute top-0 left-1/2 transform -translate-x-1/2 w-60 h-60 z-0" 
                   viewBox="0 0 100 100"
                 >
                   {/* Multiple sketchy circles for hand-drawn effect */}
