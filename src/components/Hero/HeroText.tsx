@@ -3,16 +3,18 @@ import { motion } from "framer-motion";
 import SocialLinks from "./SocialLinks";
 
 interface HeroTextProps {
-  title?: string;
+  title_prefix?: string;
+  title_suffix?: string;
   highlightedWord?: string;
   description?: string;
   className?: string;
 }
 
 export default function HeroText({ 
-  title = "Crafting practical",
-  highlightedWord = "experiences", 
-  description = "I create thoughtful digital solutions that combine technical excellence with artistic sensibility.",
+  title_prefix = "Expanding",
+  highlightedWord = "Horizons", 
+  title_suffix = " - One Project at a Time",
+  description = "I expand my tech skills by building, using each project to learn and master something new. This is where I share that journey.",
   className = "md:w-2/3 mb-8 md:mb-0 md:order-2 flex flex-col justify-center"
 }: HeroTextProps) {
   return (
@@ -24,12 +26,12 @@ export default function HeroText({
         className="header-content"
       >
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
-          {title} <span className="relative inline-block">
+          {title_prefix} <span className="relative inline-block">
             <span className="relative z-10">{highlightedWord}</span>
             <svg className="absolute -bottom-1 left-0 w-full h-3 text-yellow-300 z-0" viewBox="0 0 100 15" preserveAspectRatio="none">
               <path d="M0,5 Q25,0 50,5 T100,5" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" />
             </svg>
-          </span> with a personal touch
+          </span> {title_suffix}
         </h1>
       </motion.div>
       
