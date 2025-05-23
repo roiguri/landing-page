@@ -9,7 +9,7 @@ export default function SketchyDivider() {
         <svg 
           className="w-full h-12" 
           viewBox="0 0 1000 50" 
-          preserveAspectRatio="none"
+          preserveAspectRatio="xMidYMid meet"
         >
           <motion.path 
             initial={{ pathLength: 0 }}
@@ -32,6 +32,7 @@ export default function SketchyDivider() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.5 }}
             cx="200" cy="25" r="4" fill="#EC4899" 
+            vectorEffect="non-scaling-stroke"
           />
           <motion.circle 
             initial={{ scale: 0, opacity: 0 }}
@@ -39,6 +40,7 @@ export default function SketchyDivider() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.6 }}
             cx="400" cy="25" r="4" fill="#6366F1" 
+            vectorEffect="non-scaling-stroke"
           />
           <motion.circle 
             initial={{ scale: 0, opacity: 0 }}
@@ -46,6 +48,7 @@ export default function SketchyDivider() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.7 }}
             cx="600" cy="25" r="4" fill="#10B981" 
+            vectorEffect="non-scaling-stroke"
           />
           <motion.circle 
             initial={{ scale: 0, opacity: 0 }}
@@ -53,6 +56,7 @@ export default function SketchyDivider() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.8 }}
             cx="800" cy="25" r="4" fill="#F59E0B" 
+            vectorEffect="non-scaling-stroke"
           />
           
           {/* Optional tiny stars and shapes */}
@@ -64,6 +68,7 @@ export default function SketchyDivider() {
             d="M130,15 L132,10 L134,15 L139,17 L134,19 L132,24 L130,19 L125,17 Z" 
             fill="#6366F1" 
             opacity="0.7"
+            vectorEffect="non-scaling-stroke"
           />
           <motion.path 
             initial={{ scale: 0, opacity: 0 }}
@@ -73,6 +78,7 @@ export default function SketchyDivider() {
             d="M700,40 L702,35 L704,40 L709,42 L704,44 L702,49 L700,44 L695,42 Z" 
             fill="#EC4899" 
             opacity="0.7"
+            vectorEffect="non-scaling-stroke"
           />
           <motion.path 
             initial={{ scale: 0, opacity: 0 }}
@@ -82,6 +88,7 @@ export default function SketchyDivider() {
             d="M950,20 L952,15 L954,20 L959,22 L954,24 L952,29 L950,24 L945,22 Z" 
             fill="#10B981" 
             opacity="0.7"
+            vectorEffect="non-scaling-stroke"
           />
         </svg>
       </div>

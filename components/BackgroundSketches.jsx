@@ -8,7 +8,7 @@ export default function BackgroundSketches() {
       aria-hidden="true"
     >
       {/* Background sketch elements */}
-      <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
+      <svg className="absolute top-0 left-0 w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid slice">
         {/* Circles */}
         <motion.circle 
           animate={{ 
@@ -101,6 +101,43 @@ export default function BackgroundSketches() {
           opacity="0.3" 
         />
         
+        <motion.circle 
+          animate={{ 
+            y: [0, 8, 0], 
+            x: [0, -8, 0],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{ 
+            duration: 13, 
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+          className="bg-circle" 
+          cx="50" cy="25" r="1.8" 
+          fill="none" 
+          stroke="#EC4899" 
+          strokeWidth="0.2" 
+          opacity="0.2" 
+        />
+        <motion.circle 
+          animate={{ 
+            y: [0, -12, 0], 
+            x: [0, 12, 0],
+            scale: [1, 0.9, 1]
+          }}
+          transition={{ 
+            duration: 16, 
+            repeat: Infinity,
+            repeatType: "reverse"
+          }}
+          className="bg-circle" 
+          cx="25" cy="60" r="2.2" 
+          fill="none" 
+          stroke="#10B981" 
+          strokeWidth="0.2" 
+          opacity="0.25" 
+        />
+        
         {/* Squiggles */}
         <motion.path 
           animate={{ rotate: [-1, 2, -1] }}
@@ -144,6 +181,29 @@ export default function BackgroundSketches() {
           stroke="#6366F1" 
           strokeWidth="0.2" 
           opacity="0.2"
+          transformOrigin="center"
+        />
+        
+        <motion.path 
+          animate={{ rotate: [1.5, -1.5, 1.5] }}
+          transition={{ duration: 14, repeat: Infinity }}
+          className="bg-squiggle" 
+          d="M40,5 Q45,0 50,5 T60,5" 
+          fill="none" 
+          stroke="#6366F1" 
+          strokeWidth="0.2" 
+          opacity="0.15"
+          transformOrigin="center"
+        />
+        <motion.path 
+          animate={{ rotate: [-1.5, 1.5, -1.5] }}
+          transition={{ duration: 15, repeat: Infinity }}
+          className="bg-squiggle" 
+          d="M40,95 Q45,90 50,95 T60,95" 
+          fill="none" 
+          stroke="#F59E0B" 
+          strokeWidth="0.2" 
+          opacity="0.15"
           transformOrigin="center"
         />
         

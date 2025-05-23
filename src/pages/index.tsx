@@ -118,6 +118,7 @@ export default function Home() {
                 <svg 
                   className="absolute top-0 left-1/2 transform -translate-x-1/2 w-60 h-60 z-0" 
                   viewBox="0 0 100 100"
+                  preserveAspectRatio="xMidYMid meet"
                 >
                   {/* Multiple sketchy circles for hand-drawn effect */}
                   <motion.circle 
@@ -135,8 +136,9 @@ export default function Home() {
                     cx="50" cy="50" r="45" 
                     fill="none" 
                     stroke="#FF6B6B" 
-                    strokeWidth="1.5" 
+                    strokeWidth="4" 
                     strokeDasharray="2,1"
+                    vectorEffect="non-scaling-stroke"
                     style={{
                       filter: "drop-shadow(0 0 3px rgba(255, 107, 107, 0.3))"
                     }}
@@ -153,11 +155,12 @@ export default function Home() {
                       rotate: { duration: 12, repeat: Infinity, ease: "linear" },
                       scale: { duration: 6, repeat: Infinity, ease: "easeInOut" }
                     }}
-                    cx="50" cy="50" r="43" 
+                    cx="50" cy="50" r="46" 
                     fill="none" 
                     stroke="#4ECDC4" 
-                    strokeWidth="1.2" 
+                    strokeWidth="3" 
                     strokeDasharray="3,2"
+                    vectorEffect="non-scaling-stroke"
                     style={{
                       filter: "drop-shadow(0 0 3px rgba(78, 205, 196, 0.3))"
                     }}
@@ -174,11 +177,12 @@ export default function Home() {
                       rotate: { duration: 10, repeat: Infinity, ease: "linear" },
                       scale: { duration: 5, repeat: Infinity, ease: "easeInOut" }
                     }}
-                    cx="50" cy="50" r="47" 
+                    cx="50" cy="50" r="48" 
                     fill="none" 
                     stroke="#FFE66D" 
-                    strokeWidth="1" 
+                    strokeWidth="3" 
                     strokeDasharray="1,1"
+                    vectorEffect="non-scaling-stroke"
                     style={{
                       filter: "drop-shadow(0 0 3px rgba(255, 230, 109, 0.3))"
                     }}
@@ -200,6 +204,7 @@ export default function Home() {
                     d="M75,25 L80,20 L85,25 L80,30 Z" 
                     fill="#FF6B6B" 
                     opacity="0.8"
+                    vectorEffect="non-scaling-stroke"
                   />
                   <motion.path 
                     initial={{ scale: 0, opacity: 0 }}
@@ -216,6 +221,7 @@ export default function Home() {
                     d="M20,75 L25,70 L30,75 L25,80 Z" 
                     fill="#4ECDC4" 
                     opacity="0.8"
+                    vectorEffect="non-scaling-stroke"
                   />
                   <motion.circle 
                     initial={{ scale: 0, opacity: 0 }}
@@ -230,6 +236,7 @@ export default function Home() {
                     cx="80" cy="75" r="3" 
                     fill="#FFE66D" 
                     opacity="0.8"
+                    vectorEffect="non-scaling-stroke"
                   />
                   <motion.circle 
                     initial={{ scale: 0, opacity: 0 }}
@@ -244,6 +251,7 @@ export default function Home() {
                     cx="25" cy="25" r="2" 
                     fill="#A8E6CF" 
                     opacity="0.8"
+                    vectorEffect="non-scaling-stroke"
                   />
                 </svg>
               </motion.div>
