@@ -10,6 +10,7 @@ interface Project {
   thumbnail: string;
   tags: string[];
   color: string;
+  link: string;
 }
 
 interface ProjectCarouselProps {
@@ -153,7 +154,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
       {/* Carousel Container */}
       <div 
         ref={containerRef}
-        className="overflow-hidden px-8 pt-4"
+        className="overflow-hidden px-8 pt-8"
       >
         <motion.div
           className="flex gap-6"
@@ -185,8 +186,6 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
                 maxWidth: cardWidth || 'none'
               }}
               className="flex-shrink-0"
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.2 }}
             >
               <ProjectCard project={project} />
             </motion.div>
