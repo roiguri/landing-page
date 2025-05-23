@@ -14,9 +14,10 @@ interface Project {
 
 interface ProjectCarouselProps {
   projects: Project[];
+  showComingSoon?: boolean; // Optional flag to show/hide coming soon message
 }
 
-const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
+const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingSoon = true }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -211,20 +212,40 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects }) => {
         </div>
       )}
       
-      {/* Progress indicator - only show when mounted and needed */}
-      {isMounted && getDotCount() > 1 && (
-        <div className="mt-4 max-w-xs mx-auto">
-          <div className="h-1 bg-gray-200 rounded-full overflow-hidden">
-            <motion.div
-              className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"
-              initial={{ width: "0%" }}
-              animate={{ 
-                width: `${((currentIndex + 1) / getDotCount()) * 100}%` 
-              }}
-              transition={{ duration: 0.3 }}
-            />
+      {/* Coming Soon Message - show when flag is true */}
+      {isMounted && showComingSoon && (
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-8 text-center"
+        >
+          <div className="relative inline-block">
+            <p className="text-gray-600 text-sm md:text-base font-medium">
+              More exciting projects coming soon
+              <span className="inline-block ml-1 animate-pulse">✨</span>
+            </p>
+            
+            {/* Sketchy underline */}
+            <svg 
+              className="absolute -bottom-1 left-0 w-full h-2 text-yellow-300 opacity-60" 
+              viewBox="0 0 100 8" 
+              preserveAspectRatio="none"
+            >
+              <motion.path 
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 1, delay: 0.8 }}
+                d="M0,4 Q25,1 50,4 T100,4" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="3" 
+                strokeLinecap="round"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>
           </div>
-        </div>
+        </motion.div>
       )}
     </div>
   );

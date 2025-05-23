@@ -18,7 +18,6 @@ export default function Home() {
   const mainRef = useRef(null);
   const blueprintRef = useRef(null);
 
-  // TODO: Replace with actual project data.
   const projects: Project[] = [
     {
       id: 1,
@@ -28,30 +27,6 @@ export default function Home() {
       tags: ["Vanilla JS", "Firebase", "Web Components", "Vite"],
       color: "#6a994e"
     },
-    {
-      id: 2,
-      title: "Hand-Drawn UI Kit",
-      summary: "A unique UI component library with a hand-drawn, sketchy aesthetic",
-      thumbnail: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=500&auto=format&fit=crop",
-      tags: ["JavaScript", "CSS", "SVG", "Figma"],
-      color: "#EC4899"
-    },
-    {
-      id: 3,
-      title: "Animated Map Exploration",
-      summary: "An interactive map with custom animations and geographic data visualization",
-      thumbnail: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=500&auto=format&fit=crop",
-      tags: ["Leaflet", "GeoJSON", "GSAP", "Canvas"],
-      color: "#10B981"
-    },
-    {
-      id: 4,
-      title: "Creative Coding Experiments",
-      summary: "A collection of generative art and creative coding experiments",
-      thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500&auto=format&fit=crop",
-      tags: ["p5.js", "WebGL", "JavaScript", "Creative Coding"],
-      color: "#F59E0B"
-    }
   ];
 
   return (
@@ -323,7 +298,7 @@ export default function Home() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            <ProjectCarousel projects={projects} />
+            <ProjectCarousel projects={projects} showComingSoon={true} />
           </motion.div>
         </div>
       </section>
