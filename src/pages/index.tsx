@@ -1,9 +1,8 @@
-import React, { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useRef } from "react";
+import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import SketchyDivider from "../../components/SketchyDivider";
 import ProjectCard from "../../components/ProjectCard";
-import ProjectDetail from "../../components/ProjectDetail";
 import BackgroundSketches from "../../components/BackgroundSketches";
 
 interface Project {
@@ -13,15 +12,11 @@ interface Project {
   thumbnail: string;
   tags: string[];
   color: string;
-  description: string;
-  links: { demo: string; github: string };
-  images: string[];
 }
 
 export default function Home() {
   const mainRef = useRef(null);
   const blueprintRef = useRef(null);
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
 
   // TODO: Replace with actual project data.
   const projects: Project[] = [
@@ -31,15 +26,7 @@ export default function Home() {
       summary: "A dynamic dashboard for visualizing complex datasets with intuitive controls",
       thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop",
       tags: ["React", "D3.js", "SVG", "GSAP"],
-      color: "#6366F1",
-      description: "This project features a custom-built data visualization framework that allows users to explore complex datasets through intuitive interactions. The dashboard automatically adapts to different types of data, providing meaningful visualizations and insights.",
-      links: {
-        demo: "https://example.com/demo",
-        github: "https://github.com/username/project"
-      },
-      images: [
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
-      ]
+      color: "#6366F1"
     },
     {
       id: 2,
@@ -47,15 +34,7 @@ export default function Home() {
       summary: "A unique UI component library with a hand-drawn, sketchy aesthetic",
       thumbnail: "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=500&auto=format&fit=crop",
       tags: ["JavaScript", "CSS", "SVG", "Figma"],
-      color: "#EC4899",
-      description: "I designed and developed a comprehensive UI kit that brings a hand-drawn, sketchy aesthetic to web interfaces. The kit includes over 30 components, all with customizable styles, animations, and interactive states.",
-      links: {
-        demo: "https://example.com/demo",
-        github: "https://github.com/username/project"
-      },
-      images: [
-        "https://images.unsplash.com/photo-1572044162444-ad60f128bdea?q=80&w=800&auto=format&fit=crop"
-      ]
+      color: "#EC4899"
     },
     {
       id: 3,
@@ -63,15 +42,7 @@ export default function Home() {
       summary: "An interactive map with custom animations and geographic data visualization",
       thumbnail: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=500&auto=format&fit=crop",
       tags: ["Leaflet", "GeoJSON", "GSAP", "Canvas"],
-      color: "#10B981",
-      description: "This project transforms traditional maps into interactive storytelling tools. Using custom animations and data visualizations, it allows users to explore geographic data in an engaging and intuitive way.",
-      links: {
-        demo: "https://example.com/demo",
-        github: "https://github.com/username/project"
-      },
-      images: [
-        "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop"
-      ]
+      color: "#10B981"
     },
     {
       id: 4,
@@ -79,32 +50,9 @@ export default function Home() {
       summary: "A collection of generative art and creative coding experiments",
       thumbnail: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=500&auto=format&fit=crop",
       tags: ["p5.js", "WebGL", "JavaScript", "Creative Coding"],
-      color: "#F59E0B",
-      description: "This ongoing project explores the intersection of art, math, and code. I've created a series of interactive sketches and generative artworks that respond to user input, audio, and other external data sources.",
-      links: {
-        demo: "https://example.com/demo",
-        github: "https://github.com/username/project"
-      },
-      images: [
-        "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=800&auto=format&fit=crop"
-      ]
+      color: "#F59E0B"
     }
   ];
-
-  // Handle project card click
-  const handleProjectClick = (project: Project) => {
-    setActiveProject(activeProject?.id === project.id ? null : project);
-    
-    // If opening a project, scroll to it
-    if (activeProject?.id !== project.id) {
-      setTimeout(() => {
-        const detailElement = document.querySelector(`#project-detail-${project.id}`);
-        if (detailElement) {
-          detailElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
-      }, 100);
-    }
-  };
 
   return (
     <main 
@@ -364,41 +312,18 @@ export default function Home() {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
             {projects.map((project, index) => (
-              <React.Fragment key={project.id}>
-                <motion.div 
-                  initial={{ y: 100, opacity: 0 }}
-                  whileInView={{ y: 0, opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="relative"
-                >
-                  <ProjectCard 
-                    project={project}
-                    isActive={activeProject?.id === project.id}
-                    onClick={() => handleProjectClick(project)}
-                  />
-                </motion.div>
-                
-                <AnimatePresence>
-                  {activeProject?.id === project.id && (
-                    <motion.div 
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.4, ease: "easeInOut" }}
-                      id={`project-detail-${project.id}`}
-                      className="col-span-1 md:col-span-2 overflow-hidden"
-                    >
-                      <ProjectDetail 
-                        project={activeProject}
-                        onClose={() => setActiveProject(null)}
-                      />
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </React.Fragment>
+              <motion.div 
+                key={project.id}
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                className="relative"
+              >
+                <ProjectCard project={project} />
+              </motion.div>
             ))}
           </div>
         </div>
