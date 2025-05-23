@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion, useMotionValue, useTransform, PanInfo } from "framer-motion";
+import { motion, PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import ProjectCard from "./ProjectCard";
 
@@ -21,14 +21,11 @@ interface ProjectCarouselProps {
 const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingSoon = true }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
   const [visibleCards, setVisibleCards] = useState(1); // Start with 1 for consistent SSR
   const [isMounted, setIsMounted] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  const x = useMotionValue(0);
   
   // Calculate how many cards are visible at once based on screen size
   const getVisibleCards = () => {
@@ -57,7 +54,6 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
         const newCardWidth = (availableWidth - (gap * (newVisibleCards - 1))) / newVisibleCards;
         
         setCardWidth(newCardWidth);
-        setContainerWidth(containerRect.width);
         setVisibleCards(newVisibleCards);
       }
     };
@@ -66,14 +62,6 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
   }, [isMounted]);
-  
-  // Calculate transform based on current index
-  // useEffect(() => {
-  //   if (!isMounted) return;
-  //   const gap = 24;
-  //   const offset = -(currentIndex * (cardWidth + gap));
-  //   x.set(offset);
-  // }, [currentIndex, cardWidth, x, isMounted]);
   
   const maxIndex = Math.max(0, projects.length - visibleCards);
   

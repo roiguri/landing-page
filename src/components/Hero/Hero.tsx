@@ -5,7 +5,6 @@ import HeroText from "./HeroText";
 import ProfileImage from "./ProfileImage";
 
 interface HeroProps {
-  title?: string;
   highlightedWord?: string;
   description?: string;
   profileSrc?: string;
@@ -15,7 +14,6 @@ interface HeroProps {
 }
 
 export default function Hero({ 
-  title,
   highlightedWord,
   description,
   profileSrc,
@@ -30,7 +28,6 @@ export default function Hero({
           
           {/* Mobile: Title and description first */}
           <HeroText 
-            title={title}
             highlightedWord={highlightedWord}
             description={description}
           />
