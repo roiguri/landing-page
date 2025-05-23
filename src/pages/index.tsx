@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import SketchyDivider from "../../components/SketchyDivider";
-import ProjectCard from "../../components/ProjectCard";
+import ProjectCarousel from "../../components/ProjectCarousel";
 import BackgroundSketches from "../../components/BackgroundSketches";
 
 interface Project {
@@ -22,11 +22,11 @@ export default function Home() {
   const projects: Project[] = [
     {
       id: 1,
-      title: "Interactive Data Visualization",
-      summary: "A dynamic dashboard for visualizing complex datasets with intuitive controls",
-      thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop",
-      tags: ["React", "D3.js", "SVG", "GSAP"],
-      color: "#6366F1"
+      title: "Our Kitchen Chronicles",
+      summary: "A family cookbook web application for sharing, discovering, and managing homemade recipes with Firebase backend",
+      thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=500&auto=format&fit=crop", // cooking/kitchen themed image
+      tags: ["Vanilla JS", "Firebase", "Web Components", "Vite"],
+      color: "#6a994e"
     },
     {
       id: 2,
@@ -317,20 +317,14 @@ export default function Home() {
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {projects.map((project, index) => (
-              <motion.div 
-                key={project.id}
-                initial={{ y: 100, opacity: 0 }}
-                whileInView={{ y: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="relative"
-              >
-                <ProjectCard project={project} />
-              </motion.div>
-            ))}
-          </div>
+          <motion.div 
+            initial={{ y: 50, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <ProjectCarousel projects={projects} />
+          </motion.div>
         </div>
       </section>
       
