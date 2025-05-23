@@ -25,6 +25,25 @@ const nextConfig: NextConfig = {
     // Enable build worker for faster builds
     webpackBuildWorker: true,
   },
+  
+  // Custom headers for PWA
+  async headers() {
+    return [
+      {
+        source: '/sw.js',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=0, must-revalidate',
+          },
+          {
+            key: 'Service-Worker-Allowed',
+            value: '/',
+          },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

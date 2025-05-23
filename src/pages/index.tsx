@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import SketchyDivider from "../components/SketchyDivider";
 import BackgroundSketches from "../components/BackgroundSketches";
 import Hero from "../components/Hero/Hero";
@@ -8,6 +8,19 @@ import { projects } from "../data/projects";
 export default function Home() {
   const mainRef = useRef(null);
   const blueprintRef = useRef(null);
+
+  // Register service worker for PWA functionality
+  useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then((registration) => {
+          console.log('Service Worker registered successfully:', registration.scope);
+        })
+        .catch((error) => {
+          console.log('Service Worker registration failed:', error);
+        });
+    }
+  }, []);
 
   // Custom smooth scroll function with better easing
   const smoothScrollToProjects = () => {
