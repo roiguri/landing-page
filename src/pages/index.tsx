@@ -115,7 +115,7 @@ export default function Home() {
       <BackgroundSketches />
       
       {/* Header section */}
-      <header className="relative pt-16 pb-20 md:pt-24 md:pb-32 px-6 overflow-hidden">
+      <header className="relative pt-16 pb-12 md:pt-24 md:pb-12 px-6 overflow-hidden">
         <div className="max-w-5xl mx-auto">
           <div className="md:flex items-center gap-12">
             {/* Left column with image */}
