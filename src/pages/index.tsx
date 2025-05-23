@@ -309,9 +309,6 @@ export default function Home() {
             transition={{ duration: 0.8 }}
             className="mb-16 max-w-2xl"
           >
-            <div className="inline-block bg-indigo-100 rounded-full px-4 py-1 text-indigo-800 text-sm font-medium mb-4">
-              Projects
-            </div>
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
               A selection of my creative work
             </h2>
