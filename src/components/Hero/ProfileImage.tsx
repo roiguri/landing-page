@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 interface ProfileImageProps {
   src?: string;
@@ -22,11 +23,14 @@ export default function ProfileImage({
       className={className}
     >
       <div className="relative z-10 w-56 h-56 mx-auto overflow-hidden rounded-full">
-        <img 
+        <Image 
           src={src} 
           alt={alt} 
-          className="w-fit h-auto object-cover object-top"
+          width={224}
+          height={224}
+          className="w-full h-full object-cover object-top"
           style={{ filter: "contrast(1.1) brightness(0.95)" }}
+          priority
         />
       </div>
       
