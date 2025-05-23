@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 export default function SketchyDivider() {
   return (
-    <div className="relative py-16 px-6 overflow-hidden">
+    <div className="relative py-4 px-6 overflow-hidden">
       <div className="max-w-6xl mx-auto relative">
         {/* Background glow effect */}
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/5 to-indigo-500/10 blur-3xl"></div>

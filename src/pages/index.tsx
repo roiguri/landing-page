@@ -265,7 +265,7 @@ export default function Home() {
       {/* Projects section */}
       <section 
         id="projects-section" 
-        className="py-16 md:py-24 px-6 relative"
+        className="py-8 md:py-12 px-6 relative"
         ref={blueprintRef}
       >
         <div 
