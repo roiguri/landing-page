@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink } from "lucide-react";
+import Image from "next/image";
 
 export default function ProjectCard({ project }) {
   const [isDragging, setIsDragging] = useState(false);
@@ -153,13 +154,22 @@ export default function ProjectCard({ project }) {
       <div className="relative z-20 flex flex-col h-full">
         {/* Image with enhanced hover effect */}
         <div className="relative mb-4 overflow-hidden rounded-xl flex-shrink-0 group/image">
-          <motion.img 
-            src={project.thumbnail} 
-            alt={project.title} 
-            className="w-full h-48 object-cover mx-auto transition-transform duration-300 group-hover:scale-105"
+          <motion.div
+            className="relative w-full h-48"
             whileHover={{ scale: 1.08 }}
             transition={{ duration: 0.3 }}
-          />
+          >
+            <Image
+              src={project.thumbnail}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              priority={false}
+              placeholder="blur"
+              blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyejVkWYZdIfOtxRKmNk6aMlELALhZajVGBfevEr8BWSJNsJ9ZHQR3Jh/TNLrlwUZDON0FE3tUIvKxfE6aNEkTXJ1w/TuA="
+            />
+          </motion.div>
           
           {/* Enhanced image overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />

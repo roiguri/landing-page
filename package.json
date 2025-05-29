@@ -2,11 +2,13 @@
   "name": "landing-page",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "optimize-image": "node scripts/optimize-image.js"
   },
   "dependencies": {
     "framer-motion": "^12.12.1",
@@ -24,6 +26,7 @@
     "eslint": "^9",
     "eslint-config-next": "15.1.8",
     "postcss": "^8",
+    "sharp": "^0.34.2",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
   }
