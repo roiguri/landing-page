@@ -10,4 +10,13 @@ export const projects: Project[] = [
     color: "#6a994e",
     link: "https://our-kitchen-chronicles.netlify.app/"
   },
+  {
+    id: 2,
+    title: "AI Live Assistant",
+    summary: "A Chrome extension providing real-time AI assistance with screen capture, progressive chat interface, and Gemini Live API integration",
+    thumbnail: "/images/live-assistant.jpg", 
+    tags: ["Chrome Extension", "Gemini API", "WebSocket", "Vanilla JS"], 
+    color: "#007AFF",
+    link: "https://github.com/roiguri/live-assistant"
+  }
 ]; 
