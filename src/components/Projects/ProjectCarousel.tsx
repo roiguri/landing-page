@@ -177,7 +177,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
               }}
               className="flex-shrink-0 flex"
             >
-              <ProjectCard project={project} />
+              <ProjectCard project={project} index={index} />
             </motion.div>
           ))}
         </motion.div>

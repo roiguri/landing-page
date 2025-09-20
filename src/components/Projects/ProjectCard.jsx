@@ -5,7 +5,7 @@ import Image from "next/image";
 import TechIcon from "../TechIcon";
 import { getTechIcon } from "../../utils/techIcons";
 
-export default function ProjectCard({ project }) {
+export default function ProjectCard({ project, index = 0 }) {
   const [isDragging, setIsDragging] = useState(false);
   
 
@@ -129,21 +129,21 @@ export default function ProjectCard({ project }) {
         viewBox="0 0 100 100" 
         preserveAspectRatio="none"
       >
-        <motion.path 
-          d="M2,2 Q8,0 20,2 T50,2 T80,2 Q92,0 98,2 L98,98 Q92,100 80,98 T50,98 T20,98 Q8,100 2,98 Z" 
-          fill="none" 
+        <motion.path
+          d="M2,2 Q8,0 20,2 T50,2 T80,2 Q92,0 98,2 L98,98 Q92,100 80,98 T50,98 T20,98 Q8,100 2,98 Z"
+          fill="none"
           stroke={project.color || "#6366F1"}
           strokeWidth="0.8"
           strokeLinecap="round"
           opacity="0.6"
           className="group-hover:opacity-100 transition-opacity duration-300"
           strokeDasharray="320 40" // Long dash followed by a gap
-          animate={{ 
-            strokeDashoffset: [0, -360], // Move the gap around the perimeter
+          animate={{
+            strokeDashoffset: [index * 60, index * 60 - 360], // Ordered starting offset with same movement
           }}
-          transition={{ 
-            duration: 16, 
-            repeat: Infinity, 
+          transition={{
+            duration: 16,
+            repeat: Infinity,
             ease: "linear"
           }}
         />
