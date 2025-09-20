@@ -12,6 +12,24 @@ export const projects: Project[] = [
   },
   {
     id: 2,
+    title: "Recipe Auto-Creation API",
+    summary: "FastAPI service for AI-powered recipe extraction from text, URLs, and images with multi-language support",
+    thumbnail: "/images/recipe-api.png",
+    tags: ["FastAPI", "Python", "Google Gemini", "PostgreSQL", "React"],
+    color: "#e74c3c",
+    link: "https://recipe-reader-demo.netlify.app"
+  },
+  {
+    id: 3,
+    title: "Tank Battle Game",
+    summary: "Console-based C++ tank battle game demonstrating fundamental programming concepts, and modular architecture with dynamic library loading and web UI",
+    thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500&auto=format&fit=crop",
+    tags: ["C++", "CMake", "JavaScript", "Game Development", "Algorithms"],
+    color: "#2c3e50",
+    link: "https://github.com/roiguri/c-Game_Board"
+  },
+  {
+    id: 4,
     title: "AI Live Assistant",
     summary: "A Chrome extension providing real-time AI assistance with screen capture, progressive chat interface, and Gemini Live API integration",
     thumbnail: "/images/live-assistant.jpg", 

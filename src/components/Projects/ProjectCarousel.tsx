@@ -114,7 +114,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
           <button
             onClick={goToPrevious}
             disabled={currentIndex === 0}
-            className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center transition-all duration-200 ${
+            className={`absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-40 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center transition-all duration-200 ${
               currentIndex === 0 
                 ? 'opacity-50 cursor-not-allowed' 
                 : 'hover:shadow-xl hover:scale-105 active:scale-95'
@@ -127,7 +127,7 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
           <button
             onClick={goToNext}
             disabled={currentIndex >= maxIndex}
-            className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center transition-all duration-200 ${
+            className={`absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-40 w-12 h-12 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center transition-all duration-200 ${
               currentIndex >= maxIndex 
                 ? 'opacity-50 cursor-not-allowed' 
                 : 'hover:shadow-xl hover:scale-105 active:scale-95'
