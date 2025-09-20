@@ -8,7 +8,9 @@ export const projects: Project[] = [
     thumbnail: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=500&auto=format&fit=crop", // cooking/kitchen themed image
     tags: ["Vanilla JS", "Firebase", "Web Components", "Vite"],
     color: "#6a994e",
-    link: "https://our-kitchen-chronicles.netlify.app/"
+    link: "https://our-kitchen-chronicles.netlify.app/",
+    github: "https://github.com/roiguri/My-Cook-Book",
+    deployment: "https://our-kitchen-chronicles.netlify.app/"
   },
   {
     id: 2,
@@ -17,7 +19,9 @@ export const projects: Project[] = [
     thumbnail: "/images/recipe-api.png",
     tags: ["FastAPI", "Python", "Google Gemini", "PostgreSQL", "React"],
     color: "#e74c3c",
-    link: "https://recipe-reader-demo.netlify.app"
+    link: "https://recipe-reader-demo.netlify.app",
+    github: "https://github.com/roiguri/recipe-reader",
+    deployment: "https://recipe-reader-demo.netlify.app"
   },
   {
     id: 3,
@@ -26,7 +30,8 @@ export const projects: Project[] = [
     thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500&auto=format&fit=crop",
     tags: ["C++", "CMake", "JavaScript", "Game Development", "Algorithms"],
     color: "#2c3e50",
-    link: "https://github.com/roiguri/c-Game_Board"
+    link: "https://github.com/roiguri/c-Game_Board",
+    github: "https://github.com/roiguri/c-Game_Board"
   },
   {
     id: 4,
@@ -35,6 +40,7 @@ export const projects: Project[] = [
     thumbnail: "/images/live-assistant.jpg", 
     tags: ["Chrome Extension", "Gemini API", "WebSocket", "Vanilla JS"], 
     color: "#007AFF",
-    link: "https://github.com/roiguri/live-assistant"
+    link: "https://github.com/roiguri/live-assistant",
+    github: "https://github.com/roiguri/live-assistant"
   }
 ]; 

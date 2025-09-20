@@ -10,7 +10,9 @@ interface Project {
   thumbnail: string;
   tags: string[];
   color: string;
-  link: string;
+  link: string; // Main link for card navigation
+  github?: string; // GitHub repository link
+  deployment?: string; // Deployment/production link
 }
 
 interface ProjectCarouselProps {

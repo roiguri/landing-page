@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Github, Globe } from "lucide-react";
 import Image from "next/image";
 
 export default function ProjectCard({ project }) {
@@ -32,9 +32,16 @@ export default function ProjectCard({ project }) {
     setTimeout(() => setIsDragging(false), 50);
   };
 
+  const handleChipClick = (e, url) => {
+    e.stopPropagation(); // Prevent card click
+    if (url) {
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <motion.div
-      className="relative bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100 overflow-hidden h-[490px] min-w-[300px] flex flex-col cursor-pointer group"
+      className="relative bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100 overflow-hidden h-[520px] min-w-[300px] flex flex-col cursor-pointer group"
       whileHover={{ 
         y: -6, 
         rotate: 0.3,
@@ -234,10 +241,48 @@ export default function ProjectCard({ project }) {
         
         {/* Description */}
         <div className="flex-grow flex flex-col">
-          <p className="text-gray-600 leading-relaxed mb-6 text-sm flex-grow group-hover:text-gray-700 transition-colors duration-300">
+          <p className="text-gray-600 leading-relaxed mb-2 text-sm flex-grow group-hover:text-gray-700 transition-colors duration-300">
             {project.summary}
           </p>
           
+          {/* Project links chips - positioned before tech stack */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.github && (
+              <motion.button
+                onClick={(e) => handleChipClick(e, project.github)}
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ 
+                  delay: 1.2, 
+                  duration: 0.4,
+                  type: "spring",
+                  stiffness: 200 
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white border-2 border-slate-800 hover:bg-slate-800 hover:border-slate-700 hover:shadow-lg transition-all duration-200 cursor-pointer shadow-md"
+              >
+                <Github size={12} />
+                <span>GitHub</span>
+              </motion.button>
+            )}
+            {project.deployment && (
+              <motion.button
+                onClick={(e) => handleChipClick(e, project.deployment)}
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ 
+                  delay: 1.3, 
+                  duration: 0.4,
+                  type: "spring",
+                  stiffness: 200 
+                }}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-blue-700 text-white border-2 border-blue-500 hover:from-blue-700 hover:to-blue-800 hover:border-blue-600 hover:shadow-lg transition-all duration-200 cursor-pointer shadow-md"
+              >
+                <Globe size={12} />
+                <span>Live Demo</span>
+              </motion.button>
+            )}
+          </div>
+
           {/* Enhanced tags without dots and better styling */}
           <div className="flex flex-wrap gap-2 mt-auto">
             {project.tags.map((tag, index) => {
@@ -248,7 +293,7 @@ export default function ProjectCard({ project }) {
                   initial={{ opacity: 0, scale: 0.8, y: 10 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   transition={{ 
-                    delay: 1.2 + (index * 0.1), 
+                    delay: 1.4 + (index * 0.1), 
                     duration: 0.4,
                     type: "spring",
                     stiffness: 200 
