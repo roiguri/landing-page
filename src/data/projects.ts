@@ -42,5 +42,15 @@ export const projects: Project[] = [
     color: "#007AFF",
     link: "https://github.com/roiguri/live-assistant",
     github: "https://github.com/roiguri/live-assistant"
+  },
+  {
+    id: 5,
+    title: "Video Processing Pipeline",
+    summary: "A video processing application using Python and OpenCV, featuring a pipeline of video stabilization, background subtraction, matting, and object tracking",
+    thumbnail: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=500&auto=format&fit=crop",
+    tags: ["Python", "OpenCV", "Computer Vision"],
+    color: "#f39c12",
+    link: "https://github.com/roiguri/video-project",
+    github: "https://github.com/roiguri/video-project"
   }
 ]; 
