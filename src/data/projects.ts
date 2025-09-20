@@ -17,7 +17,7 @@ export const projects: Project[] = [
     title: "Recipe Auto-Creation API",
     summary: "FastAPI service for AI-powered recipe extraction from text, URLs, and images with multi-language support",
     thumbnail: "/images/recipe-api.png",
-    tags: ["FastAPI", "Python", "Google Gemini", "PostgreSQL", "React"],
+    tags: ["FastAPI", "Python", "Gemini API", "PostgreSQL", "React"],
     color: "#e74c3c",
     link: "https://recipe-reader-demo.netlify.app",
     github: "https://github.com/roiguri/recipe-reader",

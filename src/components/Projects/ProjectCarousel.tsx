@@ -147,20 +147,20 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
         className="overflow-hidden px-8 pt-8"
       >
         <motion.div
-          className="flex gap-6"
+          className="flex gap-6 items-stretch"
           drag="x"
-          dragConstraints={{ 
-            left: Math.min(0, -getMaxScrollDistance()), 
-            right: 0 
+          dragConstraints={{
+            left: Math.min(0, -getMaxScrollDistance()),
+            right: 0
           }}
           dragElastic={0.1}
           onDragStart={handleDragStart}
           onDragEnd={handleDragEnd}
           animate={{ x: -(currentIndex * (cardWidth + 24)) }}
           transition={
-            isDragging 
+            isDragging
               ? { type: "spring", damping: 40, stiffness: 300 }
-              : { 
+              : {
                   type: "tween",
                   duration: 0.8,
                   ease: [0.25, 0.1, 0.25, 1]
@@ -171,11 +171,11 @@ const ProjectCarousel: React.FC<ProjectCarouselProps> = ({ projects, showComingS
             <motion.div
               key={project.id}
               ref={index === 0 ? cardRef : undefined}
-              style={{ 
+              style={{
                 minWidth: cardWidth || 'auto',
                 maxWidth: cardWidth || 'none'
               }}
-              className="flex-shrink-0"
+              className="flex-shrink-0 flex"
             >
               <ProjectCard project={project} />
             </motion.div>

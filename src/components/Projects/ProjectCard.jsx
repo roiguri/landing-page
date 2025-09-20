@@ -2,19 +2,12 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github, Globe } from "lucide-react";
 import Image from "next/image";
+import TechIcon from "../TechIcon";
+import { getTechIcon } from "../../utils/techIcons";
 
 export default function ProjectCard({ project }) {
   const [isDragging, setIsDragging] = useState(false);
   
-  // Playful colors for tags
-  const tagColors = [
-    { bg: "bg-indigo-100", text: "text-indigo-700", border: "border-indigo-200", accent: "#6366F1" },
-    { bg: "bg-pink-100", text: "text-pink-700", border: "border-pink-200", accent: "#EC4899" },
-    { bg: "bg-emerald-100", text: "text-emerald-700", border: "border-emerald-200", accent: "#10B981" },
-    { bg: "bg-amber-100", text: "text-amber-700", border: "border-amber-200", accent: "#F59E0B" },
-    { bg: "bg-purple-100", text: "text-purple-700", border: "border-purple-200", accent: "#8B5CF6" },
-    { bg: "bg-cyan-100", text: "text-cyan-700", border: "border-cyan-200", accent: "#06B6D4" },
-  ];
 
   const handleClick = () => {
     // Only navigate if we weren't dragging
@@ -41,11 +34,10 @@ export default function ProjectCard({ project }) {
 
   return (
     <motion.div
-      className="relative bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100 overflow-hidden h-[520px] min-w-[300px] flex flex-col cursor-pointer group"
-      whileHover={{ 
-        y: -6, 
-        rotate: 0.3,
-        scale: 1.01
+      className="relative bg-white rounded-2xl p-6 shadow-lg border-2 border-gray-100 overflow-hidden min-h-[520px] min-w-[300px] flex flex-col cursor-pointer group h-full"
+      whileHover={{
+        y: -6,
+        scale: 1.02
       }}
       whileTap={{ scale: 0.98 }}
       initial={{ opacity: 0, y: 20 }}
@@ -239,24 +231,24 @@ export default function ProjectCard({ project }) {
           </svg>
         </div>
         
-        {/* Description */}
-        <div className="flex-grow flex flex-col">
-          <p className="text-gray-600 leading-relaxed text-sm group-hover:text-gray-700 transition-colors duration-300">
+        {/* Description and Project Links */}
+        <div className="flex-grow flex flex-col min-h-0">
+          <p className="text-gray-600 leading-relaxed text-sm group-hover:text-gray-700 transition-colors duration-300 mb-3">
             {project.summary}
           </p>
 
-          {/* Project links chips - positioned right after description with no spacing */}
-          <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-2">
+          {/* Project links chips - positioned right after description */}
+          <div className="flex flex-wrap gap-1.5 sm:gap-2">
             {project.github && (
               <motion.button
                 onClick={(e) => handleChipClick(e, project.github)}
                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ 
-                  delay: 1.2, 
+                transition={{
+                  delay: 1.2,
                   duration: 0.4,
                   type: "spring",
-                  stiffness: 200 
+                  stiffness: 200
                 }}
                 className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-semibold bg-slate-900 text-white border-2 border-slate-800 hover:bg-slate-800 hover:border-slate-700 hover:shadow-lg transition-all duration-200 cursor-pointer shadow-md flex-shrink-0"
               >
@@ -269,11 +261,11 @@ export default function ProjectCard({ project }) {
                 onClick={(e) => handleChipClick(e, project.deployment)}
                 initial={{ opacity: 0, scale: 0.8, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ 
-                  delay: 1.3, 
+                transition={{
+                  delay: 1.3,
                   duration: 0.4,
                   type: "spring",
-                  stiffness: 200 
+                  stiffness: 200
                 }}
                 className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-blue-700 text-white border-2 border-blue-500 hover:from-blue-700 hover:to-blue-800 hover:border-blue-600 hover:shadow-lg transition-all duration-200 cursor-pointer shadow-md flex-shrink-0"
               >
@@ -282,38 +274,50 @@ export default function ProjectCard({ project }) {
               </motion.button>
             )}
           </div>
+        </div>
 
-          {/* Enhanced tags without dots and better styling - positioned at bottom with space from links */}
-          <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto pt-4 max-w-full">
-            {project.tags.map((tag, index) => {
-              const colorScheme = tagColors[index % tagColors.length];
-              return (
-                <motion.span 
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.8, y: 10 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  transition={{ 
-                    delay: 1.4 + (index * 0.1), 
-                    duration: 0.4,
-                    type: "spring",
-                    stiffness: 200 
-                  }}
-                  className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold border ${colorScheme.bg} ${colorScheme.text} ${colorScheme.border} relative overflow-hidden transition-all duration-300 group-hover:shadow-md group-hover:border-opacity-60 flex-shrink-0`}
-                  style={{
-                    background: `linear-gradient(135deg, ${colorScheme.bg.replace('bg-', '').replace('-100', '')}20 0%, ${colorScheme.bg.replace('bg-', '').replace('-100', '')}10 100%)`
-                  }}
-                >
-                  {/* Subtle shine effect on hover */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 -translate-x-full group-hover:translate-x-full transition-all duration-500"
-                    style={{ width: '200%' }}
+        {/* Enhanced tech stack chips positioned at bottom - moved outside flex-grow container */}
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto pt-4 max-w-full">
+          {project.tags.map((tag, index) => {
+            const iconData = getTechIcon(tag);
+            const hasIcon = !!iconData;
+
+            return (
+              <motion.span
+                key={index}
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{
+                  delay: 1.4 + (index * 0.1),
+                  duration: 0.4,
+                  type: "spring",
+                  stiffness: 200
+                }}
+                className="inline-flex items-center px-2 py-1.5 rounded-lg text-xs font-semibold border-2 flex-shrink-0 bg-white/90 backdrop-blur-sm text-gray-700 border-gray-200"
+                style={{
+                  background: 'rgba(255, 255, 255, 0.95)',
+                  WebkitFontSmoothing: 'antialiased',
+                  MozOsxFontSmoothing: 'grayscale',
+                  textRendering: 'optimizeLegibility',
+                  WebkitBackfaceVisibility: 'hidden',
+                  backfaceVisibility: 'hidden',
+                  transform: 'translateZ(0)'
+                }}
+              >
+                {/* Icon with proper spacing */}
+                {hasIcon && (
+                  <TechIcon
+                    techName={tag}
+                    size={14}
+                    className="mr-1.5 flex-shrink-0"
+                    useOriginalColors={true}
                   />
-                  
-                  <span className="relative z-10">{tag}</span>
-                </motion.span>
-              );
-            })}
-          </div>
+                )}
+
+                <span className="whitespace-nowrap">{tag}</span>
+              </motion.span>
+            );
+          })}
         </div>
       </div>
       
