@@ -28,7 +28,7 @@ export const projects: Project[] = [
     title: "Tank Battle Game",
     summary: "Console-based C++ tank battle game demonstrating fundamental programming concepts, and modular architecture with dynamic library loading and web UI",
     thumbnail: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=500&auto=format&fit=crop",
-    tags: ["C++", "CMake", "JavaScript", "Game Development", "Algorithms"],
+    tags: ["C++", "CMake", "JavaScript"],
     color: "#2c3e50",
     link: "https://github.com/roiguri/c-Game_Board",
     github: "https://github.com/roiguri/c-Game_Board"
@@ -38,7 +38,7 @@ export const projects: Project[] = [
     title: "AI Live Assistant",
     summary: "A Chrome extension providing real-time AI assistance with screen capture, progressive chat interface, and Gemini Live API integration",
     thumbnail: "/images/live-assistant.jpg", 
-    tags: ["Chrome Extension", "Gemini API", "WebSocket", "Vanilla JS"], 
+    tags: ["Chrome Extension", "Gemini API", "Vanilla JS"], 
     color: "#007AFF",
     link: "https://github.com/roiguri/live-assistant",
     github: "https://github.com/roiguri/live-assistant"

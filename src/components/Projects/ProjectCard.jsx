@@ -241,12 +241,12 @@ export default function ProjectCard({ project }) {
         
         {/* Description */}
         <div className="flex-grow flex flex-col">
-          <p className="text-gray-600 leading-relaxed mb-2 text-sm flex-grow group-hover:text-gray-700 transition-colors duration-300">
+          <p className="text-gray-600 leading-relaxed text-sm group-hover:text-gray-700 transition-colors duration-300">
             {project.summary}
           </p>
-          
-          {/* Project links chips - positioned before tech stack */}
-          <div className="flex flex-wrap gap-2 mb-4">
+
+          {/* Project links chips - positioned right after description with no spacing */}
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-2">
             {project.github && (
               <motion.button
                 onClick={(e) => handleChipClick(e, project.github)}
@@ -258,7 +258,7 @@ export default function ProjectCard({ project }) {
                   type: "spring",
                   stiffness: 200 
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-white border-2 border-slate-800 hover:bg-slate-800 hover:border-slate-700 hover:shadow-lg transition-all duration-200 cursor-pointer shadow-md"
+                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-semibold bg-slate-900 text-white border-2 border-slate-800 hover:bg-slate-800 hover:border-slate-700 hover:shadow-lg transition-all duration-200 cursor-pointer shadow-md flex-shrink-0"
               >
                 <Github size={12} />
                 <span>GitHub</span>
@@ -275,7 +275,7 @@ export default function ProjectCard({ project }) {
                   type: "spring",
                   stiffness: 200 
                 }}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-blue-700 text-white border-2 border-blue-500 hover:from-blue-700 hover:to-blue-800 hover:border-blue-600 hover:shadow-lg transition-all duration-200 cursor-pointer shadow-md"
+                className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-xs font-semibold bg-gradient-to-r from-blue-600 to-blue-700 text-white border-2 border-blue-500 hover:from-blue-700 hover:to-blue-800 hover:border-blue-600 hover:shadow-lg transition-all duration-200 cursor-pointer shadow-md flex-shrink-0"
               >
                 <Globe size={12} />
                 <span>Live Demo</span>
@@ -283,8 +283,8 @@ export default function ProjectCard({ project }) {
             )}
           </div>
 
-          {/* Enhanced tags without dots and better styling */}
-          <div className="flex flex-wrap gap-2 mt-auto">
+          {/* Enhanced tags without dots and better styling - positioned at bottom with space from links */}
+          <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-auto pt-4 max-w-full">
             {project.tags.map((tag, index) => {
               const colorScheme = tagColors[index % tagColors.length];
               return (
@@ -298,7 +298,7 @@ export default function ProjectCard({ project }) {
                     type: "spring",
                     stiffness: 200 
                   }}
-                  className={`inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold border ${colorScheme.bg} ${colorScheme.text} ${colorScheme.border} relative overflow-hidden transition-all duration-300 group-hover:shadow-md group-hover:border-opacity-60`}
+                  className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold border ${colorScheme.bg} ${colorScheme.text} ${colorScheme.border} relative overflow-hidden transition-all duration-300 group-hover:shadow-md group-hover:border-opacity-60 flex-shrink-0`}
                   style={{
                     background: `linear-gradient(135deg, ${colorScheme.bg.replace('bg-', '').replace('-100', '')}20 0%, ${colorScheme.bg.replace('bg-', '').replace('-100', '')}10 100%)`
                   }}
