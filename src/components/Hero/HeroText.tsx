@@ -6,6 +6,7 @@ interface HeroTextProps {
   title_prefix?: string;
   title_suffix?: string;
   highlightedWord?: string;
+  subHeader?: string;
   description?: string;
   className?: string;
 }
@@ -14,6 +15,7 @@ export default function HeroText({
   title_prefix = "Expanding",
   highlightedWord = "Horizons", 
   title_suffix = " - One Project at a Time",
+  subHeader = "Software Engineer Intern at Google",
   description = "I expand my tech skills by building, using each project to learn and master something new. This is where I share that journey.",
   className = "md:w-2/3 mb-8 md:mb-0 md:order-2 flex flex-col justify-center"
 }: HeroTextProps) {
@@ -35,6 +37,18 @@ export default function HeroText({
         </h1>
       </motion.div>
       
+      {subHeader && (
+        <motion.div
+          initial={{ y: -50, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+        >
+          <h2 className="text-xl md:text-2xl font-semibold text-gray-800 mb-6 -mt-4">
+            {subHeader}
+          </h2>
+        </motion.div>
+      )}
+
       <motion.div 
         initial={{ y: -50, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
