@@ -38,7 +38,7 @@ const ProjectsSection = forwardRef<HTMLElement, ProjectsSectionProps>(({
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-2xl mb-8"
+          className="max-w-2xl"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             {title}
