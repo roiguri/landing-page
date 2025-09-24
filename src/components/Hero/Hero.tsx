@@ -5,9 +5,6 @@ import HeroText from "./HeroText";
 import ProfileImage from "./ProfileImage";
 
 interface HeroProps {
-  highlightedWord?: string;
-  subHeader?: string;
-  description?: string;
   profileSrc?: string;
   profileAlt?: string;
   onScrollToProjects?: () => void;
@@ -15,9 +12,6 @@ interface HeroProps {
 }
 
 export default function Hero({ 
-  highlightedWord,
-  subHeader,
-  description,
   profileSrc,
   profileAlt,
   onScrollToProjects,
@@ -29,11 +23,7 @@ export default function Hero({
         <div className="md:flex items-center justify-center gap-12 min-h-[400px]">
           
           {/* Mobile: Title and description first */}
-          <HeroText 
-            highlightedWord={highlightedWord}
-            subHeader={subHeader}
-            description={description}
-          />
+          <HeroText />
 
           {/* Mobile: Image second, Desktop: Image first */}
           <div className="md:w-1/3 mb-8 md:mb-0 md:order-1 flex justify-center items-center">
