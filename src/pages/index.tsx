@@ -73,7 +73,7 @@ export default function Home() {
       
       {/* Footer */}
       <footer className="py-12 px-6 text-center text-gray-600 border-t border-gray-200">
-        <p>© {new Date().getFullYear()} Roi Guri</p>
+        <p>© {new Date().getFullYear()} • Roi Guri</p>
       </footer>
     </main>
   );
