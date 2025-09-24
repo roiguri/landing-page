@@ -6,7 +6,6 @@ import ProjectCarousel from "./ProjectCarousel";
 interface ProjectsSectionProps {
   projects: Project[];
   title?: string;
-  description?: string;
   showComingSoon?: boolean;
   className?: string;
   id?: string;
@@ -14,8 +13,7 @@ interface ProjectsSectionProps {
 
 const ProjectsSection = forwardRef<HTMLElement, ProjectsSectionProps>(({ 
   projects,
-  title = "A selection of my creative work",
-  description = "Each project represents a unique challenge that I approached with a combination of technical skills and creative problem-solving.",
+  title = "Featured Projects",
   showComingSoon = true,
   className = "py-8 md:py-12 px-6 relative",
   id = "projects-section"
@@ -40,14 +38,11 @@ const ProjectsSection = forwardRef<HTMLElement, ProjectsSectionProps>(({
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="max-w-2xl"
+          className="max-w-2xl mb-8"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             {title}
           </h2>
-          <p className="text-lg text-gray-700">
-            {description}
-          </p>
         </motion.div>
         
         <motion.div 
